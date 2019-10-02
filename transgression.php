@@ -16,6 +16,8 @@ define( 'TRANSGRESSION_PATH', plugin_dir_path( __FILE__ ) );
 define( 'TRANSGRESSION_TEMPLATES', TRANSGRESSION_PATH . '/templates' );
 
 add_action( 'init', function() {
+	require_once TRANSGRESSION_PATH . '/class-core.php';
+
 	$core = new Transgression\Core();
 	$core->setup();
 } );
