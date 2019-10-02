@@ -85,7 +85,10 @@ class Core {
 			$template = TRANSGRESSION_TEMPLATES . '/dashboard.php';
 		} elseif ( 'myaccount/form-edit-account.php' === $template_name ) {
 			$template = TRANSGRESSION_TEMPLATES . '/edit-account.php';
+		} elseif ( 'cart/cart-empty.php' === $template_name ) {
+			$template = TRANSGRESSION_TEMPLATES . '/cart-empty.php';
 		}
+
 		return $template;
 	}
 
