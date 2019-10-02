@@ -75,7 +75,7 @@ class Core {
 	 */
 	public function filter_wc_template( string $template, string $template_name ) : string {
 		if ( 'myaccount/form-login.php' === $template_name ) {
-			$template = '';
+			$template = TRANSGRESSION_TEMPLATES . '/form-login.php';
 		} elseif ( 'myaccount/dashboard.php' === $template_name ) {
 			$template = TRANSGRESSION_TEMPLATES . '/dashboard.php';
 		} elseif ( 'myaccount/form-edit-account.php' === $template_name ) {
