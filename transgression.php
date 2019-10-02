@@ -15,6 +15,7 @@
 namespace Transgression;
 
 define( 'TRANSGRESSION_PATH', plugin_dir_path( __FILE__ ) );
+define( 'TRANSGRESSION_TEMPLATES', TRANSGRESSION_PATH . '/templates' );
 
 class Core {
 	/**
@@ -81,9 +82,9 @@ class Core {
 		if ( 'myaccount/form-login.php' === $template_name ) {
 			$template = '';
 		} elseif ( 'myaccount/dashboard.php' === $template_name ) {
-			$template = TRANSGRESSION_PATH . '/dashboard.php';
+			$template = TRANSGRESSION_TEMPLATES . '/dashboard.php';
 		} elseif ( 'myaccount/form-edit-account.php' === $template_name ) {
-			$template = TRANSGRESSION_PATH . '/edit-account.php';
+			$template = TRANSGRESSION_TEMPLATES . '/edit-account.php';
 		}
 		return $template;
 	}
