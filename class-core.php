@@ -18,6 +18,7 @@ class Core {
 		add_filter( 'wpa_email_subject', [ $this, 'filter_wpa_login_subject' ] );
 		add_filter( 'wpa_email_message', [ $this, 'filter_wpa_login_message' ], 10, 2 );
 		add_filter( 'wpa_change_form_label', [ $this, 'filter_wpa_login_label' ] );
+		add_filter( 'wpa_change_link_expiration', [ $this, 'filter_wpa_token_expire_time' ] );
 
 		// WooCommerce plugin.
 		add_filter( 'wc_get_template', [ $this, 'filter_wc_template' ], 10, 2 );
@@ -64,6 +65,15 @@ class Core {
 	 */
 	public function filter_wpa_login_label() : string {
 		return __( 'Login with your vetted email', 'transgression' );
+	}
+
+	/**
+	 * Filters the expiration time
+	 *
+	 * @return integer
+	 */
+	public function filter_wpa_token_expire_time() : int {
+		return HOUR_IN_SECONDS;
 	}
 
 	/**
