@@ -73,7 +73,7 @@ class Core {
 	 * @return integer
 	 */
 	public function filter_wpa_token_expire_time() : int {
-		return HOUR_IN_SECONDS;
+		return time() + HOUR_IN_SECONDS;
 	}
 
 	/**
