@@ -27,6 +27,7 @@ class Core {
 		add_filter( 'woocommerce_add_to_cart_validation', [ $this, 'filter_wc_cart_validate' ], 10, 2 );
 		add_filter( 'woocommerce_breadcrumb_product_terms_args', [ $this, 'filter_wc_remove_category_breadcrumb' ] );
 		add_action( 'woocommerce_before_single_product_summary', [ $this, 'action_wc_show_login' ] );
+		add_filter( 'woocommerce_available_payment_gateways', [ $this, 'filter_payment_gateways' ] );
 
 		remove_action( 'woocommerce_single_variation', 'woocommerce_single_variation_add_to_cart_button', 20 );
 		add_action( 'woocommerce_single_variation', [ $this, 'action_wc_login_add_cart' ], 20 );
@@ -205,5 +206,18 @@ class Core {
 			$meta['pronouns'] = '';
 		}
 		return $meta;
+	}
+
+	/**
+	 * Hides cash on demand payments from front end.
+	 *
+	 * @param array $gateways Array of payment gateways, keyed by slug.
+	 * @return array
+	 */
+	public function filter_payment_gateways( array $gateways ) : array {
+		if ( ! is_admin() && isset( $gateways['cod'] ) ) {
+			unset( $gateways['cod'] );
+		}
+		return $gateways;
 	}
 }
